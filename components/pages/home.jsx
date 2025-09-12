@@ -14,6 +14,8 @@ import {
   ChevronLeft,
   ChevronRight,
   Quote,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 
 export function HomePage({
@@ -31,7 +33,8 @@ export function HomePage({
       subtitle: "Delivered Fresh",
       description:
         "Discover the finest selection of traditional Cambodian products, from fresh produce to handcrafted items, all sourced directly from local artisans and farmers.",
-      image: "/cambodian-marketplace-with-fresh-products.jpg",
+      image:
+        "https://opendevelopmentcambodia.net/wp-content/uploads/sites/2/2016/04/Corn-harvest_Agricutlural-Commondities.jpg",
       badge: "100% Fresh & Organic",
     },
     {
@@ -47,7 +50,7 @@ export function HomePage({
       subtitle: "Made with Love",
       description:
         "Support local artisans with our beautiful collection of handcrafted kitchen and tableware, each piece telling a story of Cambodian heritage.",
-      image: "/handcrafted-wooden-bowl-set.jpg",
+      image: "khmerhandi.png",
       badge: "Artisan Made",
     },
   ];
@@ -108,7 +111,7 @@ export function HomePage({
       image:
         "https://www.lalpathlabs.com/blog/wp-content/uploads/2019/01/Fruits-and-Vegetables.jpg",
       description: "Fresh, organic produce from local farms",
-      icon: <Leaf className="w-8 h-8 text-green-600" />,
+      icon: <Leaf className="w-8 h-8 text-white" />,
     },
     {
       id: "meat",
@@ -116,32 +119,37 @@ export function HomePage({
       image:
         "https://img.freepik.com/premium-photo/meat-seafood_1194485-1380.jpg",
       description: "Premium quality meat and fresh seafood",
-      icon: <Award className="w-8 h-8 text-green-600" />,
+      icon: <Award className="w-8 h-8 text-white" />,
     },
     {
       id: "spices",
       name: "Spices & Herbs",
       image: "https://images5.alphacoders.com/337/337294.jpg",
       description: "Authentic Khmer spices and aromatic herbs",
+      icon: <Award className="w-8 h-8 text-white" />,
     },
     {
       id: "snacks",
       name: "Traditional Snacks",
       image:
-        "/traditional-cambodian-snacks.jpghttps://d1bv4heaa2n05k.cloudfront.net/user-images/1484127557888/shutterstock-390568831_main_1484127563751.jpeg",
+        "https://i.pinimg.com/736x/be/86/00/be86007bad3cb63804c8befdfa610a45.jpg",
       description: "Traditional sweets and dried fruits",
+      icon: <Award className="w-8 h-8 text-white" />,
     },
     {
       id: "kitchenware",
       name: "Kitchen & Tableware",
-      image: "/handcrafted-wooden-bowl-set.jpg",
+      image:
+        "https://i.pinimg.com/736x/d9/2a/1d/d92a1d317f3417cd607ef990a4e258d7.jpg",
       description: "Handcrafted bowls and kitchen essentials",
+      icon: <Award className="w-8 h-8 text-white" />,
     },
     {
       id: "personal-care",
       name: "Personal Care",
       image: "/natural-personal-care-products.jpg",
       description: "Natural shampoos and wellness products",
+      icon: <Award className="w-8 h-8 text-white" />,
     },
   ];
 
@@ -235,34 +243,43 @@ export function HomePage({
     );
   };
 
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
+  };
+
   return (
-    <div className="min-h-screen">
-      <section className="relative bg-gradient-to-br from-green-50 via-white to-green-100 py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/fresh-produce-abundance.png')] bg-cover bg-center opacity-5"></div>
+    <div className="min-h-screen font-sans antialiased">
+      {/* Hero Section */}
+      <section className="relative py-16 md:py-20 bg-gradient-to-br from-green-50 to-gray-50 overflow-hidden">
         <div className="container mx-auto px-4 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+            <div className="space-y-6 md:space-y-8">
               <div className="inline-flex items-center px-4 py-2 bg-green-100 rounded-full text-green-700 font-medium text-sm">
                 <Leaf className="w-4 h-4 mr-2" />
                 {heroSlides[currentSlide].badge}
               </div>
-              <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
-                {heroSlides[currentSlide].title.split(" ")[0]}
-                <span className="block text-green-600">
-                  {heroSlides[currentSlide].title.split(" ").slice(1).join(" ")}
+              <h1 className="text-4xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+                <span className="text-green-600">
+                  {heroSlides[currentSlide].title}
                 </span>
-                <span className="block text-4xl lg:text-5xl text-gray-700">
+                <span className="block text-3xl lg:text-4xl text-gray-700 font-medium mt-2">
                   {heroSlides[currentSlide].subtitle}
                 </span>
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+              <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
                 {heroSlides[currentSlide].description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
                   onClick={() => onNavigate("products")}
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-lg rounded-full shadow-lg"
                 >
                   Shop Now
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -271,147 +288,138 @@ export function HomePage({
                   variant="outline"
                   size="lg"
                   onClick={() => onNavigate("about")}
-                  className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 text-lg rounded-full transition-all duration-300"
+                  className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-3 text-lg rounded-full"
                 >
                   Learn More
                 </Button>
               </div>
-
-              <div className="flex space-x-2">
+              <div className="flex space-x-2 pt-4">
                 {heroSlides.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentSlide ? "bg-green-600" : "bg-green-200"
+                      index === currentSlide ? "bg-green-600" : "bg-gray-300"
                     }`}
                   />
                 ))}
               </div>
             </div>
-
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 rounded-3xl transform rotate-3 opacity-20"></div>
               <img
                 src={heroSlides[currentSlide].image || "/placeholder.svg"}
                 alt={heroSlides[currentSlide].title}
-                className="relative rounded-3xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-500"
+                className="relative rounded-3xl shadow-2xl w-full h-auto"
               />
-
               <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm hover:bg-white p-2 rounded-full shadow-lg"
               >
                 <ChevronLeft className="w-6 h-6 text-gray-700" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm hover:bg-white p-2 rounded-full shadow-lg"
               >
-                <ChevronRight className="w-6 h-6 text-gray-700" />
+                <ChevronRight className="w-6 h-6 text-gray-70" />
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Categories Section */}
+      {/* Shop by Category (Horizontal Carousel) */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Shop by Category
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Explore our wide range of authentic Khmer products, carefully
-              curated from the best local sources
+              curated from the best local sources.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.map((category) => (
-              <Card
-                key={category.id}
-                className="group cursor-pointer hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-white to-green-50 overflow-hidden"
-                onClick={() => onNavigate("products")}
-              >
-                <CardContent className="p-0">
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={category.image || "/placeholder.svg"}
-                      alt={category.name}
-                      className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent group-hover:from-black/30 transition-all duration-500" />
-                    <div className="absolute bottom-4 left-4 text-white">
-                      {category.icon}
+          <div className="relative">
+            <div className="flex overflow-x-auto gap-8 pb-4 scrollbar-hide">
+              {categories.map((category) => (
+                <Card
+                  key={category.id}
+                  className="group flex-shrink-0 w-64 md:w-80 cursor-pointer hover:shadow-xl transition-all duration-500 border-0 bg-white rounded-2xl overflow-hidden"
+                  onClick={() => onNavigate("products")}
+                >
+                  <CardContent className="p-0">
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={category.image || "/placeholder.svg"}
+                        alt={category.name}
+                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <div className="p-2 bg-green-600 rounded-lg inline-block">
+                          {category.icon}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                      {category.name}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {category.description}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        {category.name}
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        {category.description}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Featured Products */}
-      <section className="py-20 bg-gradient-to-br from-green-50 to-white">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Featured Products
             </h2>
-            <p className="text-xl text-gray-600">
-              Handpicked favorites from our customers
+            <p className="text-lg text-gray-600">
+              Handpicked favorites from our customers.
             </p>
           </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredProducts.map((product) => (
               <Card
                 key={product.id}
-                className="group cursor-pointer hover:shadow-2xl transition-all duration-500 border-0 bg-white overflow-hidden"
+                className="group cursor-pointer hover:shadow-lg transition-all duration-300 border border-gray-200 bg-white rounded-lg overflow-hidden"
               >
                 <CardContent className="p-0">
                   <div className="relative overflow-hidden">
                     <img
                       src={product.image || "/placeholder.svg"}
                       alt={product.name}
-                      className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-56 object-cover"
                     />
-                    <div className="absolute top-3 left-3 flex flex-col gap-2">
-                      {product.originalPrice && (
-                        <div className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-                          Sale
-                        </div>
-                      )}
+                    <div className="absolute top-3 right-3 flex flex-col gap-2">
                       {product.badge && (
-                        <div className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                        <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
                           {product.badge}
                         </div>
                       )}
+                      {product.originalPrice && (
+                        <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                          Sale
+                        </div>
+                      )}
                     </div>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="absolute top-3 right-3 bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-300"
-                    >
-                      <Heart className="w-5 h-5 text-gray-600" />
-                    </Button>
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-bold text-gray-900 mb-3 text-lg">
+                  <div className="p-4 space-y-2">
+                    <h3 className="font-medium text-gray-900 text-base">
                       {product.name}
                     </h3>
-                    <div className="flex items-center mb-4">
+                    <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         {[...Array(5)].map((_, i) => (
                           <Star
@@ -423,54 +431,44 @@ export function HomePage({
                             }`}
                           />
                         ))}
-                      </div>
-                      <span className="text-sm text-gray-500 ml-2">
-                        ({product.reviews})
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="space-y-1">
-                        <div className="flex items-center space-x-3">
-                          <span className="text-xl font-bold text-green-600">
-                            ${product.price}
-                          </span>
-                          {product.originalPrice && (
-                            <span className="text-sm text-gray-500 line-through">
-                              ${product.originalPrice}
-                            </span>
-                          )}
-                        </div>
-                        <div className="flex items-center space-x-3 text-sm">
-                          <span className="text-gray-600">
-                            {product.priceKhmer?.toLocaleString() || 0}៛
-                          </span>
-                          {product.originalPriceKhmer && (
-                            <span className="text-gray-400 line-through">
-                              {product.originalPriceKhmer?.toLocaleString()}៛
-                            </span>
-                          )}
-                        </div>
+                        <span className="text-xs text-gray-500 ml-2">
+                          ({product.reviews})
+                        </span>
                       </div>
                     </div>
-                    <Button
-                      className="w-full bg-green-600 hover:bg-green-700 text-white rounded-full py-3 font-medium transition-all duration-300"
-                      onClick={() => addToCart(product)}
-                    >
-                      <ShoppingCart className="w-4 h-4 mr-2" />
-                      Add to Cart
-                    </Button>
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-col">
+                        <span className="text-xl font-bold text-green-600">
+                          ${product.price.toFixed(2)}
+                        </span>
+                        {product.originalPrice && (
+                          <span className="text-sm text-gray-500 line-through">
+                            ${product.originalPrice.toFixed(2)}
+                          </span>
+                        )}
+                        <span className="block text-xs text-gray-600 mt-1">
+                          {product.priceKhmer?.toLocaleString() || 0}៛
+                        </span>
+                      </div>
+                      <Button
+                        size="sm"
+                        className="p-2 w-10 h-10 bg-gray-200 hover:bg-gray-300 transition-colors duration-300 text-gray-700 rounded-full"
+                        onClick={() => addToCart(product)}
+                      >
+                        <ShoppingCart className="w-4 h-4" />
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
-
           <div className="text-center mt-12">
             <Button
               variant="outline"
               size="lg"
               onClick={() => onNavigate("products")}
-              className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 text-lg rounded-full transition-all duration-300"
+              className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 text-lg rounded-full"
             >
               View All Products
             </Button>
@@ -481,27 +479,26 @@ export function HomePage({
       {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Why Choose PhsarKhmer?
             </h2>
-            <p className="text-xl text-gray-600">
-              Experience the difference with our premium service
+            <p className="text-lg text-gray-600">
+              Experience the difference with our premium service.
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center group">
-                <div className="flex justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                  <div className="p-4 bg-green-100 rounded-2xl">
+                <div className="flex justify-center mb-6">
+                  <div className="p-4 bg-green-100 rounded-full transition-all duration-300 transform group-hover:scale-110">
                     {benefit.icon}
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   {benefit.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-lg">
+                <p className="text-gray-600 leading-relaxed">
                   {benefit.description}
                 </p>
               </div>
@@ -511,50 +508,45 @@ export function HomePage({
       </section>
 
       {/* Customer Feedback Carousel Section */}
-      <section className="py-20 bg-gradient-to-br from-green-600 to-green-700">
+      <section className="py-20 bg-green-700">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-white mb-4">
               What Our Customers Say
             </h2>
-            <p className="text-xl text-green-100">
-              Real feedback from our valued customers
+            <p className="text-lg text-green-100">
+              Real feedback from our valued customers.
             </p>
           </div>
-
-          <div className="relative max-w-4xl mx-auto">
-            <div className="bg-white rounded-3xl p-8 shadow-2xl">
-              <div className="flex items-center justify-center mb-6">
-                <Quote className="w-12 h-12 text-green-600" />
-              </div>
-
+          <div className="relative max-w-3xl mx-auto">
+            <div className="relative p-8 md:p-10">
               <div className="text-center">
-                <p className="text-xl text-gray-700 leading-relaxed mb-8 italic">
+                <Quote className="w-12 h-12 text-white/50 mx-auto mb-4" />
+                <p className="text-xl md:text-2xl text-white leading-relaxed mb-6 italic">
                   "{testimonials[currentTestimonial].comment}"
                 </p>
-
-                <div className="flex items-center justify-center space-x-4">
+                <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                   <img
                     src={
                       testimonials[currentTestimonial].avatar ||
                       "/placeholder.svg"
                     }
                     alt={testimonials[currentTestimonial].name}
-                    className="w-16 h-16 rounded-full object-cover border-4 border-green-100"
+                    className="w-16 h-16 rounded-full object-cover border-4 border-green-200"
                   />
-                  <div className="text-left">
-                    <h4 className="font-bold text-gray-900 text-lg">
+                  <div className="text-center sm:text-left">
+                    <h4 className="font-bold text-white text-lg">
                       {testimonials[currentTestimonial].name}
                     </h4>
-                    <p className="text-gray-600">
+                    <p className="text-green-100 text-sm">
                       {testimonials[currentTestimonial].location}
                     </p>
-                    <div className="flex items-center mt-1">
+                    <div className="flex items-center mt-1 sm:justify-center">
                       {[...Array(testimonials[currentTestimonial].rating)].map(
                         (_, i) => (
                           <Star
                             key={i}
-                            className="w-4 h-4 text-yellow-400 fill-current"
+                            className="w-4 h-4 text-yellow-300 fill-current"
                           />
                         )
                       )}
@@ -563,7 +555,6 @@ export function HomePage({
                 </div>
               </div>
             </div>
-
             <div className="flex justify-center space-x-2 mt-8">
               {testimonials.map((_, index) => (
                 <button
