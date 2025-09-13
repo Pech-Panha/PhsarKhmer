@@ -16,11 +16,13 @@ export function Navigation({ currentPage, onNavigate, cartItems = [] }) {
     { id: "service", label: "Service" },
   ];
 
+  // Search handler → sends query to Products page
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      onNavigate("products");
+      onNavigate("products", { query: searchQuery.trim() });
       setIsSearchOpen(false);
+      setSearchQuery("");
     }
   };
 
