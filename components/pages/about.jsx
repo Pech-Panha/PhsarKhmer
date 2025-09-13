@@ -1,260 +1,300 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Users, BookOpen, Code, Target } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Users,
+  BookOpen,
+  Code,
+  Target,
+  Sparkles,
+  Handshake,
+  Compass,
+  Rocket,
+} from "lucide-react";
+import Image from "next/image";
 
 export function AboutPage() {
   const projectInfo = [
     {
-      icon: <BookOpen className="w-6 h-6" />,
+      icon: <Sparkles className="w-6 h-6" />,
       title: "Academic Excellence",
       description:
-        "This project demonstrates advanced ReactJS concepts and modern web development practices learned in our UX/UI program.",
+        "Demonstrates advanced ReactJS concepts and modern web development practices from our UX/UI program.",
     },
     {
-      icon: <Users className="w-6 h-6" />,
+      icon: <Handshake className="w-6 h-6" />,
       title: "Team Collaboration",
       description:
-        "Built through collaborative effort, showcasing teamwork and project management skills essential in professional development.",
+        "Built through a collaborative effort, showcasing teamwork and project management skills.",
     },
     {
-      icon: <Code className="w-6 h-6" />,
-      title: "Modern Technologies",
-      description:
-        "Utilizing cutting-edge web technologies including ReactJS, Tailwind CSS, and responsive design principles.",
-    },
-    {
-      icon: <Target className="w-6 h-6" />,
+      icon: <Compass className="w-6 h-6" />,
       title: "Real-world Application",
       description:
-        "Creating a functional e-commerce platform that demonstrates practical application of theoretical knowledge.",
+        "A functional e-commerce platform that applies theoretical knowledge to a practical, real-world scenario.",
     },
-  ]
+    {
+      icon: <Rocket className="w-6 h-6" />,
+      title: "Modern Technologies",
+      description:
+        "Utilizes cutting-edge web technologies like ReactJS, Tailwind CSS, and responsive design.",
+    },
+  ];
 
   const groupMembers = [
     {
       name: "Member 1",
       role: "Team Leader & Frontend Developer",
-      image: "/placeholder.svg?key=member1",
-      description: "Responsible for project coordination and main component development.",
+      image: "/Panha.png",
+      description:
+        "Responsible for project coordination and main component development.",
     },
     {
       name: "Member 2",
-      role: "UI/UX Designer",
-      image: "/placeholder.svg?key=member2",
-      description: "Focused on user interface design and user experience optimization.",
+      role: "Frontend Developer",
+      image: "/Sokly.png",
+      description: "Focused on product and its detail.",
     },
     {
       name: "Member 3",
       role: "Frontend Developer",
-      image: "/placeholder.svg?key=member3",
-      description: "Specialized in component development and state management.",
+      image: "/Mey.png",
+      description: "Specialized in development Services page.",
     },
     {
       name: "Member 4",
       role: "Frontend Developer",
-      image: "/placeholder.svg?key=member4",
-      description: "Handled routing, navigation, and responsive design implementation.",
+      image: "/Ban.png",
+      description: "Handled About page.",
     },
     {
       name: "Member 5",
-      role: "Quality Assurance & Testing",
-      image: "/placeholder.svg?key=member5",
-      description: "Ensured code quality, testing, and project documentation.",
+      role: "Frontend Developer",
+      image: "/Kim.png",
+      description: "Logo designer, Create login and Sign out.",
     },
-  ]
+  ];
 
   const technologies = [
     "ReactJS",
     "JavaScript (JSX)",
     "Tailwind CSS",
+    "Shadcn/UI",
     "Lucide React Icons",
     "Responsive Design",
-    "Component Architecture",
-  ]
+  ];
 
   return (
-    <div className="space-y-16">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary/10 to-accent/10 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <Badge className="bg-primary/10 text-primary border-primary/20">Academic Project</Badge>
-              <h1 className="text-4xl lg:text-5xl font-bold text-foreground text-balance">
-                PhsarKhmer <span className="text-primary">E-commerce</span> Platform
-              </h1>
-              <p className="text-lg text-muted-foreground text-pretty">
-                A comprehensive ReactJS final assignment project developed by ASB2_UX/UI students at Tux Global
-                Institute. This e-commerce platform showcases modern web development skills and demonstrates practical
-                application of ReactJS concepts in building real-world applications.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg">Explore Features</Button>
-                <Button variant="outline" size="lg">
-                  View Technologies
-                </Button>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="bg-white rounded-lg shadow-2xl p-8 text-center">
-                <img
-                  src="/placeholder.svg?height=200&width=300&text=Tux+Global+Institute+Logo"
-                  alt="Tux Global Institute Logo"
-                  className="mx-auto mb-4"
-                />
-                <h3 className="text-xl font-bold text-gray-800">Tux Global Institute</h3>
-                <p className="text-gray-600">Excellence in Technology Education</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Project Information */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-foreground mb-6">Project Objective</h2>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            To develop a fully functional e-commerce website using ReactJS that demonstrates mastery of modern web
-            development concepts, component architecture, state management, and responsive design principles while
-            creating an authentic Cambodian marketplace experience.
+    <div className="space-y-20">
+      {/* Hero & Introduction Section */}
+      <section className="relative bg-gradient-to-br from-lime-50 to-green-50 py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+          <Badge
+            variant="secondary"
+            className="bg-white/50 text-green-700 backdrop-blur-sm shadow-sm py-1.5 px-4 text-sm"
+          >
+            Academic Final Project
+          </Badge>
+          <h1 className="text-4xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-lime-600">
+              PhsarKhmer
+            </span>{" "}
+            E-commerce Platform
+          </h1>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            A comprehensive final assignment project showcasing the modern web
+            development skills of ASB2_UX/UI students at Tux Global Institute.
+            This platform demonstrates the practical application of ReactJS,
+            creating a real-world e-commerce experience.
           </p>
-        </div>
-      </section>
-
-      {/* Course Information */}
-      <section className="bg-muted py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Course Information</h2>
-            <p className="text-muted-foreground text-lg">Academic details and project context</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="text-center">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4 text-primary-foreground">
-                  <BookOpen className="w-6 h-6" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2">Class</h3>
-                <p className="text-muted-foreground text-sm">ASB2_UX/UI</p>
-              </CardContent>
-            </Card>
-            <Card className="text-center">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4 text-primary-foreground">
-                  <Target className="w-6 h-6" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2">Term & Shift</h3>
-                <p className="text-muted-foreground text-sm">Term 2 - Afternoon</p>
-              </CardContent>
-            </Card>
-            <Card className="text-center">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4 text-primary-foreground">
-                  <Code className="w-6 h-6" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2">Subject</h3>
-                <p className="text-muted-foreground text-sm">ReactJS</p>
-              </CardContent>
-            </Card>
-            <Card className="text-center">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4 text-primary-foreground">
-                  <Users className="w-6 h-6" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2">Lecturer</h3>
-                <p className="text-muted-foreground text-sm">[Lecturer Name]</p>
-              </CardContent>
-            </Card>
+          <div className="flex justify-center gap-4 pt-4">
+            <Button
+              size="lg"
+              className="bg-green-600 hover:bg-green-700 text-white shadow-lg transition-transform transform hover:scale-105"
+            >
+              Explore Project
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-green-200 text-green-700 hover:bg-green-100 transition-colors"
+            >
+              View Technologies
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Project Values */}
+      {/* Project Vision & Highlights */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-foreground mb-4">Project Highlights</h2>
-          <p className="text-muted-foreground text-lg">Key aspects demonstrated in this project</p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            Our Vision & Highlights
+          </h2>
+          <p className="text-xl text-gray-500 max-w-3xl mx-auto">
+            We aimed to build an innovative platform that not only demonstrates
+            technical proficiency but also celebrates Cambodian culture.
+          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {projectInfo.map((info, index) => (
-            <Card key={index} className="text-center">
+            <Card
+              key={index}
+              className="text-center bg-white shadow-md hover:shadow-xl transition-shadow duration-300"
+            >
               <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4 text-primary-foreground">
+                <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
                   {info.icon}
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">{info.title}</h3>
-                <p className="text-muted-foreground text-sm">{info.description}</p>
+                <h3 className="font-semibold text-gray-800 mb-2">
+                  {info.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {info.description}
+                </p>
               </CardContent>
             </Card>
           ))}
         </div>
       </section>
 
-      {/* Technologies Used */}
-      <section className="bg-muted py-16">
+      {/* Course & Institute Information */}
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">
+            Academic Context
+          </h2>
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-12 lg:gap-24">
+            <div className="space-y-4 max-w-md">
+              <Image
+                src="/Tux.png"
+                alt="Tux Global Institute Logo"
+                width={200}
+                height={200}
+                className="mx-auto"
+              />
+              <h3 className="text-2xl font-bold text-gray-800">
+                Tux Global Institute
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Excellence in Technology Education
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-left">
+              <div className="space-y-2">
+                <div className="flex items-center text-gray-700">
+                  <BookOpen className="w-5 h-5 text-green-500 mr-2" />
+                  <span className="font-semibold">Class:</span> ASB2_UX/UI
+                </div>
+                <div className="flex items-center text-gray-700">
+                  <Target className="w-5 h-5 text-green-500 mr-2" />
+                  <span className="font-semibold">Term & Shift:</span> Term 2 -
+                  Afternoon
+                </div>
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center text-gray-700">
+                  <Code className="w-5 h-5 text-green-500 mr-2" />
+                  <span className="font-semibold">Subject:</span> ReactJS
+                </div>
+                <div className="flex items-center text-gray-700">
+                  <Users className="w-5 h-5 text-green-500 mr-2" />
+                  <span className="font-semibold">Lecturer:</span> Ngin Kimlong
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            Meet the Team
+          </h2>
+          <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+            The dedicated group of developers who poured their passion and
+            skills into this project.
+          </p>
+        </div>
+
+        {/* Lecturer card */}
+        <div className="flex justify-center mb-12">
+          <Card className="text-center shadow-lg w-full max-w-sm bg-white border-2 border-green-200">
+            <CardContent className="p-6">
+              <div className="relative w-24 h-24 mx-auto mb-4">
+                <Image
+                  src="/Kru.png"
+                  alt="Lecturer Ngin Kimlong"
+                  fill
+                  className="rounded-full object-cover border-4 border-white shadow-md"
+                />
+              </div>
+              <h3 className="font-bold text-xl text-gray-800">Ngin Kimlong</h3>
+              <p className="text-sm font-semibold text-green-600">Lecturer</p>
+              <p className="text-xs text-gray-500 mt-2">
+                Guidance and support for the project.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Group members grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          {groupMembers.map((member, index) => (
+            <Card
+              key={index}
+              className="text-center bg-white shadow-sm hover:shadow-lg transition-shadow duration-300"
+            >
+              <CardContent className="p-6">
+                <div className="relative w-24 h-24 mx-auto mb-4">
+                  <Image
+                    src={member.image || "/placeholder.svg"}
+                    alt={member.name}
+                    fill
+                    className="rounded-full object-cover border-2 border-gray-200"
+                  />
+                </div>
+                <h3 className="font-semibold text-gray-800 mb-1">
+                  {member.name}
+                </h3>
+                <p className="text-green-600 font-medium text-sm">
+                  {member.role}
+                </p>
+                <p className="text-gray-500 text-xs mt-2">
+                  {member.description}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="bg-gray-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Technologies Used</h2>
-            <p className="text-muted-foreground text-lg">Modern web development stack</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Core Technologies
+            </h2>
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+              Our project is built on a robust foundation of modern web
+              development tools and frameworks.
+            </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             {technologies.map((tech, index) => (
-              <Badge key={index} variant="secondary" className="text-lg py-2 px-4">
+              <Badge
+                key={index}
+                className="text-sm md:text-md py-2 px-5 bg-white text-gray-800 font-semibold rounded-full shadow-sm hover:bg-gray-200 transition-colors"
+              >
                 {tech}
               </Badge>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Group Members */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-foreground mb-4">Group Members</h2>
-          <p className="text-muted-foreground text-lg">The dedicated team behind this project</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {groupMembers.map((member, index) => (
-            <Card key={index} className="text-center">
-              <CardContent className="p-6">
-                <img
-                  src={member.image || "/placeholder.svg"}
-                  alt={member.name}
-                  className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
-                />
-                <h3 className="font-semibold text-foreground mb-1">{member.name}</h3>
-                <p className="text-primary font-medium mb-3 text-sm">{member.role}</p>
-                <p className="text-muted-foreground text-xs">{member.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Project Vision */}
-      <section className="bg-primary py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-primary-foreground mb-4">Project Vision</h2>
-          <p className="text-primary-foreground/90 text-lg mb-8 max-w-2xl mx-auto">
-            To create an innovative e-commerce platform that not only demonstrates technical proficiency in ReactJS but
-            also celebrates Cambodian culture and provides a foundation for future web development endeavors.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary">
-              Explore Project
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
-            >
-              View Source Code
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
-  )
+  );
 }
