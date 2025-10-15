@@ -290,7 +290,7 @@ export function HomePage({
   return (
     <div className="min-h-screen font-sans antialiased">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-green-50 to-gray-50 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-green-50 to-gray-50 overflow-hidden pt-8">
         <div className="container mx-auto px-18 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <div className="space-y-6 md:space-y-8">

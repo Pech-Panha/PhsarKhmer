@@ -6,7 +6,6 @@ import { Search, ShoppingCart, Menu, X, User } from "lucide-react";
 
 export function Navigation({ currentPage, onNavigate, cartItems = [] }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   const navItems = [
@@ -16,12 +15,11 @@ export function Navigation({ currentPage, onNavigate, cartItems = [] }) {
     { id: "service", label: "Service" },
   ];
 
-  // Search handler → sends query to Products page
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
       onNavigate("products", { query: searchQuery.trim() });
-      setIsSearchOpen(false);
+      setIsMenuOpen(false);
       setSearchQuery("");
     }
   };
@@ -83,16 +81,6 @@ export function Navigation({ currentPage, onNavigate, cartItems = [] }) {
 
           {/* Right Actions */}
           <div className="flex items-center space-x-2">
-            {/* Mobile Search Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden h-11 w-11 rounded-full hover:bg-green-50 transition-all duration-300"
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-            >
-              <Search className="w-5 h-5 text-gray-700" />
-            </Button>
-
             {/* Cart */}
             <Button
               variant="ghost"
@@ -118,7 +106,7 @@ export function Navigation({ currentPage, onNavigate, cartItems = [] }) {
               <User className="w-5 h-5 text-gray-700" />
             </Button>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu Toggle */}
             <Button
               variant="ghost"
               size="icon"
@@ -134,28 +122,11 @@ export function Navigation({ currentPage, onNavigate, cartItems = [] }) {
           </div>
         </div>
 
-        {/* Mobile Search Input */}
-        {isSearchOpen && (
-          <div className="lg:hidden pb-4">
-            <form onSubmit={handleSearch} className="px-2">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <Input
-                  type="text"
-                  placeholder="Search..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-12 pr-4 py-2.5 w-full bg-white/70 backdrop-blur-sm border-green-200 rounded-full focus:ring-2 focus:ring-green-500 text-sm"
-                />
-              </div>
-            </form>
-          </div>
-        )}
-
         {/* Mobile Drawer Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-6 backdrop-blur-md bg-white/90 rounded-b-2xl border-t border-green-100/50">
-            <div className="flex flex-col space-y-2">
+          <div className="md:hidden py-6 backdrop-blur-md bg-white/90 rounded-b-2xl border-t border-green-100/50 flex flex-col justify-between">
+            {/* Navigation Links */}
+            <div className="flex flex-col space-y-2 px-3">
               {navItems.map((item) => (
                 <button
                   key={item.id}
@@ -163,7 +134,7 @@ export function Navigation({ currentPage, onNavigate, cartItems = [] }) {
                     onNavigate(item.id);
                     setIsMenuOpen(false);
                   }}
-                  className={`text-left py-3 px-5 mx-2 rounded-xl transition-all duration-300 font-medium ${
+                  className={`text-left py-3 px-5 rounded-xl transition-all duration-300 font-medium ${
                     currentPage === item.id
                       ? "bg-green-600 text-white shadow-lg"
                       : "text-gray-700 hover:bg-green-50"
@@ -173,6 +144,20 @@ export function Navigation({ currentPage, onNavigate, cartItems = [] }) {
                 </button>
               ))}
             </div>
+
+            {/* Search at Bottom */}
+            <form onSubmit={handleSearch} className="px-4 pt-6">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Input
+                  type="text"
+                  placeholder="Search products..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-12 pr-4 py-2.5 w-full bg-white/70 backdrop-blur-sm border-green-200 rounded-full focus:ring-2 focus:ring-green-500 text-sm"
+                />
+              </div>
+            </form>
           </div>
         )}
       </div>

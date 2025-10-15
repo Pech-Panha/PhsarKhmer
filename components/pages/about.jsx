@@ -43,32 +43,32 @@ export function AboutPage() {
 
   const groupMembers = [
     {
-      name: "Member 1",
+      name: "Pech Panha",
       role: "Team Leader & Frontend Developer",
       image: "/Panha.png",
       description:
         "Responsible for project coordination and main component development.",
     },
     {
-      name: "Member 2",
+      name: "Heng Sokly",
       role: "Frontend Developer",
       image: "/Sokly.png",
       description: "Focused on product and its detail.",
     },
     {
-      name: "Member 3",
+      name: "Chorn Seavmey",
       role: "Frontend Developer",
       image: "/Mey.png",
       description: "Specialized in development Services page.",
     },
     {
-      name: "Member 4",
+      name: "Kheng Sokban",
       role: "Frontend Developer",
       image: "/Ban.png",
       description: "Handled About page.",
     },
     {
-      name: "Member 5",
+      name: "Seng Bonkim",
       role: "Frontend Developer",
       image: "/Kim.png",
       description: "Logo designer, Create login and Sign out.",
